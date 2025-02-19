@@ -195,6 +195,8 @@ document.addEventListener('keydown', (e) => {
         "~": "sign",
         "Enter": "equals",
         ".": "dot",
+        "x": "multiply",
+        "s": "sign",
     }
 
 
