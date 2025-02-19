@@ -186,6 +186,7 @@ document.addEventListener('keydown', (e) => {
         "9": "nine",
         "0": "zero",
         "c": "clear",
+        "C": "clear",
         "%": "percent",
         "=": "equals",
         "+": "add",
