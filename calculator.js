@@ -121,7 +121,20 @@ function handleButtonClick(e) {
             }
         }
         else if (value == "+/-") {
-            if (operatorFlag && display.textContent.length < 9) {
+            if (operatorFlag && display.textContent.length < 9  && equationDoneFlag) {
+                if (num1.includes("-")) {
+                    num1 = num1.replace("-", "+");
+                }
+                else if (num1.includes("+")) {
+                    num1 = num1.replace("+", "-");
+                }
+                else {
+                    num1 = "-" + num1;
+                }
+                console.log(num1);
+                display.textContent = +num1;
+            }
+            else if (operatorFlag && display.textContent.length < 9) {
                 if (num2.includes("-")) {
                     num2 = num2.replace("-", "+");
                 }
