@@ -1,3 +1,3 @@
 # Calculator
 
-Final project for The Odin Project Foundations!
+Final project for The Odin Project Foundations.
