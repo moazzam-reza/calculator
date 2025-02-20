@@ -81,9 +81,11 @@ function handleButtonClick(e) {
                     num1 = display.textContent;
                 }
             }
+
+            prevKey = value;
         }
         else if (operators.includes(value)) {
-            if (operatorFlag && !equationDoneFlag) {
+            if (operatorFlag && !equationDoneFlag && !operators.includes(prevKey)) {
                 if (num1.at(-1) == ".") num1 = num1 + "0";
                 if (num2.at(-1) == ".") num2 = num2 + "0";
                 let result = operate(+num1, operator, +num2);
@@ -97,9 +99,10 @@ function handleButtonClick(e) {
             }
             operatorFlag = true;
             operator = value;
+            prevKey = value;
         }
         else if (value == "=") {
-            if (operatorFlag = true) {
+            if (operatorFlag = true && !operators.includes(prevKey)) {
                 operatorFlag = false;
 
                 if (num1.at(-1) == ".") num1 = num1 + "0";
@@ -174,6 +177,8 @@ function handleButtonClick(e) {
 
                 display.textContent = +num1;
             }
+
+            prevKey = value;
         }
     }
 }
