@@ -55,7 +55,7 @@ function handleButtonClick(e) {
         equationDoneFlag = false;
         justPressedEqualSign = false;
     }
-    else {
+    else if (display.textContent != "retard") {
         console.log(value);
         console.log(justPressedEqualSign);
         if (value != "=") justPressedEqualSign = false;
