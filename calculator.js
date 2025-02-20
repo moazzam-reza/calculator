@@ -106,7 +106,7 @@ function handleButtonClick(e) {
                 if (num2.at(-1) == ".") num2 = num2 + "0";
 
                 if (operator == "/" && num2 == 0 && !justPressedEqualSign) {
-                    display.textContent = 'u buffoon';
+                    display.textContent = 'retard';
                     num1 = "0";
                     num2 = "0";
                     operator = "";
