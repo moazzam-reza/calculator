@@ -23,6 +23,8 @@ let operator = "";
 let num2 = "0";
 let operatorFlag = false;
 let equationDoneFlag = false;
+let justPressedEqualSign = false;
+let prevKey = "0";
 
 let operators = ["+", "-", "*", "/", "%"]
 
@@ -53,6 +55,8 @@ function handleButtonClick(e) {
         equationDoneFlag = false;
     }
     else {
+        if (value != "=") justPressedEqualSign = false;
+
         if (!isNaN(+value) || value == ".") {
             if (equationDoneFlag) {
                 display.textContent = '';
@@ -101,23 +105,33 @@ function handleButtonClick(e) {
                 if (num1.at(-1) == ".") num1 = num1 + "0";
                 if (num2.at(-1) == ".") num2 = num2 + "0";
 
-                if (operator == "/" && num2 == 0) {
-                    display.textContent = 'retard';
+                if (operator == "/" && num2 == 0 && !justPressedEqualSign) {
+                    display.textContent = 'u buffoon';
                     num1 = "0";
                     num2 = "0";
                     operator = "";
                     operatorFlag = false;
                 }
-                else {
+
+                if (!justPressedEqualSign) {
                     let result = operate(+num1, operator, +num2);
                     result = result.toString().substr(0, 9);
                     if (result.at(-1) == ".") result = result.substr(0, result.length - 1);
                     display.textContent = result;
                     num1 = display.textContent;
+                    prevKey = num2;
                     num2 = "0";
+                }
+                else {
+                    let result = operate(+num1, operator, +prevKey);
+                    result = result.toString().substr(0, 9);
+                    if (result.at(-1) == ".") result = result.substr(0, result.length - 1);
+                    display.textContent = result;
+                    num1 = display.textContent;
                 }
 
                 equationDoneFlag = true;
+                justPressedEqualSign = true;
             }
         }
         else if (value == "+/-") {
