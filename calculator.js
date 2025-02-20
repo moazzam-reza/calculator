@@ -225,8 +225,13 @@ document.addEventListener('keydown', (e) => {
         "s": "sign",
     }
 
+    let clearMappingOnly = {
+        "c": "clear",
+        "C": "clear",
+    }
 
-    if (e.key == "Backspace") {
+
+    if (e.key == "Backspace" && display.textContent != 'retard') {
         display.textContent = display.textContent.slice(0, -1);
 
         if (operatorFlag && display.textContent.length < 9) {
@@ -246,10 +251,14 @@ document.addEventListener('keydown', (e) => {
             }
         }
     }
-    else {
+    else if (display.textContent != 'retard') {
         const buttonId = keyMapping[e.key];
 
         if (buttonId) document.getElementById(buttonId).click();
     }
+    else {
+        const buttonId = clearMappingOnly[e.key];
 
+        if (buttonId) document.getElementById(buttonId).click();
+    }
 })
