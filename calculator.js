@@ -53,9 +53,13 @@ function handleButtonClick(e) {
         operator = "";
         operatorFlag = false;
         equationDoneFlag = false;
+        justPressedEqualSign = false;
     }
     else {
+        console.log(value);
+        console.log(justPressedEqualSign);
         if (value != "=") justPressedEqualSign = false;
+        console.log(operatorFlag);
 
         if (!isNaN(+value) || value == ".") {
             if (equationDoneFlag) {
@@ -68,6 +72,7 @@ function handleButtonClick(e) {
             if (operatorFlag && num2 == "0" && value != ".") {
                 display.textContent = '' + value;
                 num2 = display.textContent;
+                console.log("ENTERED NUM 2 AREA")
             }
             else if (operatorFlag && display.textContent.length < 9) {
                 if (value == "." && decimalFlag || value != ".") {
@@ -80,6 +85,7 @@ function handleButtonClick(e) {
                     display.textContent += value;
                     num1 = display.textContent;
                 }
+                console.log("NUM1 AREA");
             }
 
             prevKey = value;
@@ -102,7 +108,7 @@ function handleButtonClick(e) {
             prevKey = value;
         }
         else if (value == "=") {
-            if (operatorFlag = true && !operators.includes(prevKey)) {
+            if (operatorFlag == true && !operators.includes(prevKey) || justPressedEqualSign) {
                 operatorFlag = false;
 
                 if (num1.at(-1) == ".") num1 = num1 + "0";
